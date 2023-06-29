@@ -6,7 +6,9 @@ The github page and documentation can be found [here](https://github.com/acts-pr
 To install ACTS in an interactive server with access to cvmfs: 
 
 Use this CVMFS before installing and each use of ACTS to have access to all depencies (otherwise quite tricky):
-$ source /cvmfs/sw.hsf.org/spackages6/key4hep-stack/2023-01-15/x86_64-centos7-gcc11.2.0-opt/csapx/setup.sh
+```
+source /cvmfs/sw.hsf.org/spackages6/key4hep-stack/2023-01-15/x86_64-centos7-gcc11.2.0-opt/csapx/setup.sh
+```
 
 ### Installation steps
 ```
@@ -37,12 +39,19 @@ cmake --build acts-build --target install
 
 ACTS needs to be source before each use:
 ```
-source bin/this_acts.sh
-source python/setup.sh
+source acts-install/bin/this_acts.sh
+source acts-install/python/setup.sh
 ```
 
 Setup can be testied using this tutorial chain example
 ```
-Examples/Scripts/Python/full_chain_odd.py
+python acts-src/Examples/Scripts/Python/full_chain_odd.py
 ```
+
+## Modification needed for FASER2 adaptation
+Go to the specific folder for more detail:
+- Add magnetic field in a restricted volume
+- Add detector that can be misaligned
+- Add FASER2 python full chain
+- Add the FORESEE converter 
 
