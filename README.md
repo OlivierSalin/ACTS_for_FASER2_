@@ -10,23 +10,29 @@ $ source /cvmfs/sw.hsf.org/spackages6/key4hep-stack/2023-01-15/x86_64-centos7-gc
 
 ### Installation steps
 ```
-$ git clone https://github.com/acts-project/acts <source>
-$ cd source
-$ git submodule init
-$ git submodule update
-$ cmake -B <build> -S <source>
-$ cmake --build <build> \  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-$  -DCMAKE_CXX_STANDARD=17 \
-$  -DCMAKE_INSTALL_PREFIX="acts-install" \
-$  -DACTS_BUILD_ODD=ON \
-$  -DACTS_BUILD_FATRAS=ON \
-$  -DACTS_BUILD_FATRAS_GEANT4=ON \
-$  -DACTS_BUILD_EXAMPLES_DD4HEP=ON \
-$  -DACTS_BUILD_EXAMPLES_GEANT4=ON \
-$  -DACTS_BUILD_EXAMPLES_PYTHIA8=ON \
-$  -DACTS_BUILD_EXAMPLES_PYTHON_BINDINGS=ON \
-$  -DACTS_FORCE_ASSERTIONS=ON \
-$  -DACTS_ENABLE_LOG_FAILURE_THRESHOLD=ON
+git clone https://github.com/acts-project/acts.git acts-src
+
+cd acts-src
+git checkout v25.0.1
+git submodule update --init
+cd ..
+
+cmake -B acts-build -S acts-src \
+  -GNinja \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_CXX_STANDARD=17 \
+  -DCMAKE_INSTALL_PREFIX="acts-install" \
+  -DACTS_BUILD_ODD=ON \
+  -DACTS_BUILD_FATRAS=ON \
+  -DACTS_BUILD_FATRAS_GEANT4=ON \
+  -DACTS_BUILD_EXAMPLES_DD4HEP=ON \
+  -DACTS_BUILD_EXAMPLES_GEANT4=ON \
+  -DACTS_BUILD_EXAMPLES_PYTHIA8=ON \
+  -DACTS_BUILD_EXAMPLES_PYTHON_BINDINGS=ON \
+  -DACTS_FORCE_ASSERTIONS=ON \
+  -DACTS_ENABLE_LOG_FAILURE_THRESHOLD=ON
+
+cmake --build acts-build --target install
 ```
 
 ACTS needs to be source before each use:
