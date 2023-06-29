@@ -37,12 +37,12 @@ cmake --build acts-build --target install
 
 ACTS needs to be source before each use:
 ```
-$ source bin/this_acts.sh
-$ source python/setup.sh
+source bin/this_acts.sh
+source python/setup.sh
 ```
 
 Setup can be testied using this tutorial chain example
 ```
-$ Examples/Scripts/Python/full_chain_odd.py
+Examples/Scripts/Python/full_chain_odd.py
 ```
 
