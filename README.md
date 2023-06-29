@@ -42,5 +42,7 @@ $ source python/setup.sh
 ```
 
 Setup can be testied using this tutorial chain example
+```
 $ Examples/Scripts/Python/full_chain_odd.py
+```
 
