@@ -63,21 +63,7 @@ def runTruthTrackingKalman(
             rnd=rnd,
             outputDirRoot=outputDir,
         )
-        # addParticleGun(
-        #     s,
-        #     MomentumConfig(0 * u.GeV, 5000.0 * u.GeV),
-        #     EtaConfig(4.0, 12.0, uniform=True),
-        #     ParticleConfig(2, acts.PdgParticle.eMuon, True),
-        #     vtxGen=acts.examples.GaussianVertexGenerator(
-        #         stddev=acts.Vector4(
-        #             200 * u.mm, 500 * u.mm, 1300 * u.mm, 0 * u.ns
-        #         ),
-        #         mean=acts.Vector4(0, 0, 3750, 0),
-        #     ),
-        #     multiplicity=1,
-        #     rnd=rnd,
-        #     outputDirRoot=outputDir,
-        # )
+
     else:
         acts.logging.getLogger("Truth tracking example").info(
             "Reading particles from %s", inputParticlePath.resolve()
@@ -141,17 +127,17 @@ def runTruthTrackingKalman(
 
 
     # Output
-    # s.addWriter(
-    #     acts.examples.RootTrajectoryStatesWriter(
-    #         level=acts.logging.INFO,
-    #         inputTrajectories="trajectories",
-    #         inputParticles="truth_seeds_selected",
-    #         inputSimHits="simhits",
-    #         inputMeasurementParticlesMap="measurement_particles_map",
-    #         inputMeasurementSimHitsMap="measurement_simhits_map",
-    #         filePath=str(outputDir / "trackstates_fitter.root"),
-    #     )
-    # )
+    s.addWriter(
+        acts.examples.RootTrajectoryStatesWriter(
+            level=acts.logging.INFO,
+            inputTrajectories="trajectories",
+            inputParticles="truth_seeds_selected",
+            inputSimHits="simhits",
+            inputMeasurementParticlesMap="measurement_particles_map",
+            inputMeasurementSimHitsMap="measurement_simhits_map",
+            filePath=str(outputDir / "trackstates_fitter.root"),
+        )
+    )
 
     s.addWriter(
         acts.examples.RootTrajectorySummaryWriter(
